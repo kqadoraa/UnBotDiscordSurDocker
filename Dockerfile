@@ -5,7 +5,9 @@ COPY ./botdiscord/package*.json ./
 # Téléchargement des dépendances et update de NPM et vidage du cache.
 RUN npm i \
 -g npm \
-discord.js && npm cache clean --force
+discord.js && npm cache \
+    verify \
+    clean
 COPY ./botdiscord ./
 # Démarrage du bot Discord.
 CMD ["node", "bot.js"]
